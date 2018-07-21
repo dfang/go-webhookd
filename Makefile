@@ -28,6 +28,7 @@ deps:
 	@GOPATH=$(GOPATH) go get -u "github.com/google/go-github/github"
 	@GOPATH=$(GOPATH) go get -u "github.com/whosonfirst/go-writer-slackcat"
 	@GOPATH=$(GOPATH) go get -u "github.com/whosonfirst/algnhsa"
+	@GOPATH=$(GOPATH) go get -u "github.com/whosonfirst/go-whosonfirst-aws/..."
 	@GOPATH=$(GOPATH) go get -u "github.com/thisisaaronland/go-chicken"
 
 vendor-deps: rmdeps deps

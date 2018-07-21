@@ -5,18 +5,22 @@ import (
 	"fmt"
 	"github.com/whosonfirst/go-webhookd"
 	"github.com/whosonfirst/go-webhookd/config"
+	"strings"
 )
 
 func NewDispatcherFromConfig(cfg *config.WebhookDispatcherConfig) (webhookd.WebhookDispatcher, error) {
 
-	switch cfg.Name {
-	case "Log":
+	switch strings.ToUpper(cfg.Name) {
+
+	case "LOG":
 		return NewLogDispatcher()
-	case "Null":
+	case "NULL":
 		return NewNullDispatcher()
-	case "PubSub":
+	case "PUBSUB":
 		return NewPubSubDispatcher(cfg.Host, cfg.Port, cfg.Channel)
-	case "Slack":
+	case "S3":
+		return NewS3Dispatcher("fix me")
+	case "SLACK":
 		return NewSlackDispatcher(cfg.Config)
 	default:
 		msg := fmt.Sprintf("Undefined dispatcher: '%s'", cfg.Name)
