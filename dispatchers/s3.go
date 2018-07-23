@@ -2,10 +2,14 @@ package dispatchers
 
 import (
 	"bytes"
+	"crypto/sha256"
+	"encoding/hex"
+	"fmt"
 	"github.com/whosonfirst/go-webhookd"
 	"github.com/whosonfirst/go-webhookd/config"
 	"github.com/whosonfirst/go-whosonfirst-aws/s3"
 	"io/ioutil"
+	"time"
 )
 
 type S3Dispatcher struct {
@@ -36,7 +40,12 @@ func NewS3Dispatcher(cfg *config.WebhookDispatcherConfig) (*S3Dispatcher, error)
 
 func (dispatcher *S3Dispatcher) Dispatch(body []byte) *webhookd.WebhookError {
 
-	key := "fixme"
+	hash := hashBytes(body)
+
+	now := time.Now()
+	ts := now.Unix()
+
+	key := fmt.Sprintf("%d-%s", ts, hash)
 
 	r := bytes.NewReader(body)
 	fh := ioutil.NopCloser(r)
@@ -53,4 +62,10 @@ func (dispatcher *S3Dispatcher) Dispatch(body []byte) *webhookd.WebhookError {
 	}
 
 	return nil
+}
+
+func hashBytes(body []byte) string {
+
+	hash := sha256.Sum256(body)
+	return hex.EncodeToString(hash[:])
 }
