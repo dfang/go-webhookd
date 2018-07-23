@@ -457,6 +457,34 @@ The `PubSub` dispatcher will send messages to a Redis PubSub channel.
 * **port** _int_ The port number of the Redis host you want to connect to.
 * **channel** _string_ The name of the Redis PubSub channel you want to send messages to.
 
+### S3
+
+```
+	{
+		"name": "S3",
+		"dsn": "bucket=BUCKET region={REGION} prefix={PREFIX} credentials={CREDENTIALS}"
+	}
+```
+
+#### Properties
+
+* **name** _string_ This is always `S3`.
+* **dsn** _string_ _Please write me..._
+
+##### DSN strings
+
+```
+bucket=BUCKET region={REGION} prefix={PREFIX} credentials={CREDENTIALS}
+```
+
+Valid credentials strings are:
+
+* `env:`
+
+* `iam:`
+
+* `{PATH}:{PROFILE}`
+
 ### Slack
 
 ```
