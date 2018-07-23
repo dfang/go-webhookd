@@ -2,6 +2,7 @@ package dispatchers
 
 import (
 	"github.com/whosonfirst/go-webhookd"
+	"github.com/whosonfirst/go-webhookd/config"
 	"github.com/whosonfirst/go-writer-slackcat"
 )
 
@@ -10,9 +11,10 @@ type SlackDispatcher struct {
 	writer *slackcat.Writer
 }
 
-func NewSlackDispatcher(slackcat_config string) (*SlackDispatcher, error) {
+func NewSlackDispatcher(cfg *config.WebhookDispatcherConfig) (*SlackDispatcher, error) {
 
-	writer, err := slackcat.NewWriter(slackcat_config)
+	slackcat_cfg := cfg.Config // PLEASE REPLACE WITH cfg.DSN
+	writer, err := slackcat.NewWriter(slackcat_cfg)
 
 	if err != nil {
 		return nil, err

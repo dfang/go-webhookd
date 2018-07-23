@@ -4,6 +4,7 @@ package dispatchers
 
 import (
 	"github.com/whosonfirst/go-webhookd"
+	"github.com/whosonfirst/go-webhookd/config"
 	"log"
 )
 
@@ -11,7 +12,7 @@ type LogDispatcher struct {
 	webhookd.WebhookDispatcher
 }
 
-func NewLogDispatcher() (*LogDispatcher, error) {
+func NewLogDispatcher(cfg *config.WebhookDispatcherConfig) (*LogDispatcher, error) {
 
 	n := LogDispatcher{}
 	return &n, nil

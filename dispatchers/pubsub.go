@@ -3,6 +3,7 @@ package dispatchers
 import (
 	"fmt"
 	"github.com/whosonfirst/go-webhookd"
+	"github.com/whosonfirst/go-webhookd/config"
 	"gopkg.in/redis.v1"
 )
 
@@ -12,7 +13,13 @@ type PubSubDispatcher struct {
 	channel string
 }
 
-func NewPubSubDispatcher(host string, port int, channel string) (*PubSubDispatcher, error) {
+func NewPubSubDispatcher(cfg *config.WebhookDispatcherConfig) (*PubSubDispatcher, error) {
+
+	// PLEASE REPLACE ME WITH cfg.DSN
+
+	host := cfg.Host
+	port := cfg.Port
+	channel := cfg.Channel
 
 	endpoint := fmt.Sprintf("%s:%d", host, port)
 

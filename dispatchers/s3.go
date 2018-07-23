@@ -3,6 +3,7 @@ package dispatchers
 import (
 	"bytes"
 	"github.com/whosonfirst/go-webhookd"
+	"github.com/whosonfirst/go-webhookd/config"
 	"github.com/whosonfirst/go-whosonfirst-aws/s3"
 	"io/ioutil"
 )
@@ -12,15 +13,15 @@ type S3Dispatcher struct {
 	conn *s3.S3Connection
 }
 
-func NewS3Dispatcher(dsn string) (*S3Dispatcher, error) {
+func NewS3Dispatcher(cfg *config.WebhookDispatcherConfig) (*S3Dispatcher, error) {
 
-	cfg, err := s3.NewS3ConfigFromString(dsn)
+	s3_cfg, err := s3.NewS3ConfigFromString(cfg.DSN)
 
 	if err != nil {
 		return nil, err
 	}
 
-	conn, err := s3.NewS3Connection(cfg)
+	conn, err := s3.NewS3Connection(s3_cfg)
 
 	if err != nil {
 		return nil, err

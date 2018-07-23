@@ -13,15 +13,15 @@ func NewDispatcherFromConfig(cfg *config.WebhookDispatcherConfig) (webhookd.Webh
 	switch strings.ToUpper(cfg.Name) {
 
 	case "LOG":
-		return NewLogDispatcher()
+		return NewLogDispatcher(cfg)
 	case "NULL":
-		return NewNullDispatcher()
+		return NewNullDispatcher(cfg)
 	case "PUBSUB":
-		return NewPubSubDispatcher(cfg.Host, cfg.Port, cfg.Channel)
+		return NewPubSubDispatcher(cfg)
 	case "S3":
-		return NewS3Dispatcher("fix me")
+		return NewS3Dispatcher(cfg)
 	case "SLACK":
-		return NewSlackDispatcher(cfg.Config)
+		return NewSlackDispatcher(cfg)
 	default:
 		msg := fmt.Sprintf("Undefined dispatcher: '%s'", cfg.Name)
 		return nil, errors.New(msg)

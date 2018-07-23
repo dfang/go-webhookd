@@ -2,13 +2,14 @@ package dispatchers
 
 import (
 	"github.com/whosonfirst/go-webhookd"
+	"github.com/whosonfirst/go-webhookd/config"
 )
 
 type NullDispatcher struct {
 	webhookd.WebhookDispatcher
 }
 
-func NewNullDispatcher() (*NullDispatcher, error) {
+func NewNullDispatcher(cfg *config.WebhookDispatcherConfig) (*NullDispatcher, error) {
 
 	n := NullDispatcher{}
 	return &n, nil
