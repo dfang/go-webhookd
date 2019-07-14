@@ -3,6 +3,7 @@ package transformations
 import (
 	"errors"
 	"fmt"
+
 	"github.com/whosonfirst/go-webhookd"
 	"github.com/whosonfirst/go-webhookd/config"
 )
@@ -20,6 +21,8 @@ func NewTransformationFromConfig(cfg *config.WebhookTransformationConfig) (webho
 		return NewNullTransformation()
 	case "SlackText":
 		return NewSlackTextTransformation()
+	case "WechatWorkText":
+		return NewWechatWorkTextTransformation()
 	default:
 		msg := fmt.Sprintf("Undefined transformation: '%s'", cfg.Name)
 		return nil, errors.New(msg)
