@@ -14,14 +14,13 @@ type PubSubDispatcher struct {
 	channel string
 }
 
-func NewPubSubDispatcher(host string, port int, channel string) (*PubSubDispatcher, error) {
+func NewPubSubDispatcher(host string, port string, channel string) (*PubSubDispatcher, error) {
 
-	if host == "" || port == "" {
+	if host == "" || port == "0" {
 		host = os.Getenv("WEBHOOKD_REDIS_HOST")
 		port = os.Getenv("WEBHOOKD_REDIS_PORT")
 	}
 	password := os.Getenv("WEBHOOKD_REDIS_PASSWORD")
-
 	endpoint := fmt.Sprintf("%s:%d", host, port)
 
 	client := redis.NewTCPClient(&redis.Options{

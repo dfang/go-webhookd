@@ -11,8 +11,6 @@ import (
 func NewTransformationFromConfig(cfg *config.WebhookTransformationConfig) (webhookd.WebhookTransformation, error) {
 
 	switch cfg.Name {
-	case "Chicken":
-		return NewChickenTransformation(cfg.Language, cfg.Clucking)
 	case "GitHubCommits":
 		return NewGitHubCommitsTransformation(cfg.ExcludeAdditions, cfg.ExcludeModifications, cfg.ExcludeDeletions)
 	case "GitHubRepo":

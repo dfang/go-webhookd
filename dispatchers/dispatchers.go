@@ -3,6 +3,7 @@ package dispatchers
 import (
 	"errors"
 	"fmt"
+	"strconv"
 
 	"github.com/whosonfirst/go-webhookd"
 	"github.com/whosonfirst/go-webhookd/config"
@@ -18,7 +19,7 @@ func NewDispatcherFromConfig(cfg *config.WebhookDispatcherConfig) (webhookd.Webh
 	case "Null":
 		return NewNullDispatcher()
 	case "PubSub":
-		return NewPubSubDispatcher(cfg.Host, cfg.Port, cfg.Channel)
+		return NewPubSubDispatcher(cfg.Host, strconv.Itoa(cfg.Port), cfg.Channel)
 	case "Slack":
 		return NewSlackDispatcher(cfg.Config)
 	case "Forwarder":

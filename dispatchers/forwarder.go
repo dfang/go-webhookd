@@ -10,14 +10,13 @@ import (
 
 type ForwarderDispatcher struct {
 	webhookd.WebhookDispatcher
-	// writer *slackcat.Writer
-	destinationURL string
+	DestinationURL string
 }
 
 func NewForwarderDispatcher(destinationURL string) (*ForwarderDispatcher, error) {
 
 	fdr := ForwarderDispatcher{
-		destinationURL: destinationURL,
+		DestinationURL: destinationURL,
 	}
 
 	return &fdr, nil
@@ -25,7 +24,7 @@ func NewForwarderDispatcher(destinationURL string) (*ForwarderDispatcher, error)
 
 func (fdr *ForwarderDispatcher) Dispatch(body []byte) *webhookd.WebhookError {
 
-	req, err := http.NewRequest("POST", fdr.destinationURL, bytes.NewReader(body))
+	req, err := http.NewRequest("POST", fdr.DestinationURL, bytes.NewReader(body))
 	req.Header.Set("X-Webhookd-Dispatcher-Type", "forwarder")
 	// req.Header.Set("Content-Type", "application/json")
 
@@ -42,7 +41,7 @@ func (fdr *ForwarderDispatcher) Dispatch(body []byte) *webhookd.WebhookError {
 	}
 	defer resp.Body.Close()
 
-	log.Println("forwarded request to detination url: ", fdr.destinationURL)
+	log.Println("forwarded request to detination url: ", fdr.DestinationURL)
 	// log.Println("response Status:", resp.Status)
 	// log.Println("response Headers:", resp.Header)
 	// body, _ = ioutil.ReadAll(resp.Body)
