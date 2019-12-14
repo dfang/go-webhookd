@@ -21,7 +21,7 @@ func NewPubSubDispatcher(host string, port string, channel string) (*PubSubDispa
 		port = os.Getenv("WEBHOOKD_REDIS_PORT")
 	}
 	password := os.Getenv("WEBHOOKD_REDIS_PASSWORD")
-	endpoint := fmt.Sprintf("%s:%d", host, port)
+	endpoint := fmt.Sprintf("%s:%s", host, port)
 
 	client := redis.NewTCPClient(&redis.Options{
 		Addr:     endpoint,
