@@ -21,6 +21,8 @@ func NewTransformationFromConfig(cfg *config.WebhookTransformationConfig) (webho
 		return NewSlackTextTransformation()
 	case "WechatWorkText":
 		return NewWechatWorkTextTransformation()
+	case "SSE":
+		return NewSSEDataTransformation()
 	default:
 		msg := fmt.Sprintf("Undefined transformation: '%s'", cfg.Name)
 		return nil, errors.New(msg)
