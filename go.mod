@@ -1,4 +1,4 @@
-module github.com/whosonfirst/go-webhookd
+module github.com/dfang/go-webhookd
 
 go 1.12
 
