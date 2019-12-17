@@ -284,7 +284,7 @@ hello :smiley_cat:
 
 I'm not suggesting you _should_ do these things... only that you _can_ do these things...
 
-### Compiling 🐔
+### Compiling 🐔 
 
 ```
 $> go build -o 🐔 cmd/chicken.go
@@ -327,17 +327,17 @@ $> curl -X POST 'http://localhost:1280' -d 'Hello world'
 Run the handy `make wasm` target in the Makefile to build [chicken.wasm](cmd/chicken-wasm.go) and then use it like this:
 
 ```
-     /*
+     /* 
 
      this assumes something like:
-
+     
      <textarea id="raw"></textarea>
      <button id="button" onclick="convert();" disabled>Loading...</button>
 
      */
-
+	
      if (! WebAssembly.instantiateStreaming){
-
+	 
          WebAssembly.instantiateStreaming = async (resp, importObject) => {
              const source = await (await resp).arrayBuffer();
              return await WebAssembly.instantiate(source, importObject);
@@ -349,7 +349,7 @@ Run the handy `make wasm` target in the Makefile to build [chicken.wasm](cmd/chi
      let mod, inst;
 
      WebAssembly.instantiateStreaming(fetch("chicken.wasm"), go.importObject).then(
-
+	 
           async result => {
 	      document.getElementById("button").innerText = "Convert";
 	      document.getElementById("button").removeAttribute("disabled");

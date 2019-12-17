@@ -2,7 +2,7 @@ tools:
 	go build -o bin/chicken cmd/chicken/main.go
 	go build -o bin/rooster cmd/rooster/main.go
 
-wasm:
+wasm:	
 	GOARCH=wasm GOOS=js go build -o www/chicken.wasm cmd/chicken-wasm/main.go
 
 alpha:

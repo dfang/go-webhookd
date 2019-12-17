@@ -20,9 +20,9 @@ func handler(ctx context.Context, kinesisEvent events.KinesisEvent) error {
         dataBytes := kinesisRecord.Data
         dataText := string(dataBytes)
 
-        fmt.Printf("%s Data = %s \n", record.EventName, dataText)
+        fmt.Printf("%s Data = %s \n", record.EventName, dataText) 
     }
-
+    
     return nil
 }
 
