@@ -44,7 +44,7 @@ BOOL (Boolean) | Boolean()                      | bool                      | Da
 BS (Binary Set)| BinarySet()                    | [][]byte                  | DataTypeBinarySet
 L (List)       | List()                         | []AttributeValue          | DataTypeList
 M (Map)        | Map()                          | map[string]AttributeValue | DataTypeMap
-N (Number)     | Number() / Integer() / Float() | string / int64 / float64  | DataTypeNumber
+N (Number)     | Number() / Integer() / Float() | string / int64 / float64  | DataTypeNumber 
 NS (Number Set)| NumberSet()                    | []string                  | DataTypeNumberSet
 NULL (Null)    | IsNull()                       | bool                      | DataTypeNull
 S (String)     | String()                       | string                    | DataTypeString

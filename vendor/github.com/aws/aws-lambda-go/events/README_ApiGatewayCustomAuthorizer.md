@@ -1,11 +1,11 @@
 # Sample Function
 
-The following is a simple TOKEN authorizer example to demonstrate how to use an authorization
-token to allow or deny a request. In this example, the caller named "user" is allowed to invoke
-a request if the client-supplied token value is "allow". The caller is not allowed to invoke
-the request if the token value is "deny". If the token value is "Unauthorized", the function
-returns the "Unauthorized" error with an HTTP status code of 401. For any other token value,
-the authorizer returns an "Invalid token" error.
+The following is a simple TOKEN authorizer example to demonstrate how to use an authorization 
+token to allow or deny a request. In this example, the caller named "user" is allowed to invoke 
+a request if the client-supplied token value is "allow". The caller is not allowed to invoke 
+the request if the token value is "deny". If the token value is "Unauthorized", the function 
+returns the "Unauthorized" error with an HTTP status code of 401. For any other token value, 
+the authorizer returns an "Invalid token" error. 
 
 This example is based on the [JavaScript sample](https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html#api-gateway-custom-authorizer-token-lambda-function-create) from the API Gateway documentation
 
